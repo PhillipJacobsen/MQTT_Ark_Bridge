@@ -2,7 +2,7 @@
     Ark.io BridgeChain IoT Edge Device
     This projects runs on an ESP32 microcontroller 
 
-    Ark_IoT_Edge.ino
+    MQTT_Ark_Bridge.ino
     2020 @phillipjacobsen
 
     Program Features:
@@ -29,18 +29,6 @@ bool initialConnectionEstablished_Flag = false;   //used to detect first run aft
 
 
 /********************************************************************************
-    utlgbotlib Telegram bot Library by JRios Version 1.0.0
-    https://github.com/J-Rios/uTLGBotLib-arduino
-
-********************************************************************************/
-#include <utlgbotlib.h>
-
-// Create Bot object
-//uTLGBot Bot(TLG_TOKEN);
-
-
-
-/********************************************************************************
   Time Library
   required for internal clock to syncronize with NTP server.
 ********************************************************************************/
@@ -50,8 +38,7 @@ bool initialConnectionEstablished_Flag = false;   //used to detect first run aft
 /********************************************************************************
   Update Intervals for various algorithms
 ********************************************************************************/
-uint32_t UpdateInterval_TelegramBot = 3000;           // 3000ms
-uint32_t previousUpdateTime_TelegramBot = millis();
+
 
 /********************************************************************************
    Arduino Json Libary - Tested with version 6.13
@@ -60,14 +47,6 @@ uint32_t previousUpdateTime_TelegramBot = millis();
 //#include <ArduinoJson.h>
 
 
-/********************************************************************************
-  Library for reading/writing to the ESP32 flash memory.
-  ESP32 Arduino libraries emulate EEPROM using a sector (4 kilobytes) of flash memory.
-  The total flash memory size is ???
-  The entire space is split between bootloader, application, OTA data, NVS, SPIFFS, and EEPROM.
-  EEPROM library on the ESP32 allows using at most 1 sector (4kB) of flash.
-********************************************************************************/
-#include <EEPROM.h>
 
 /********************************************************************************
     EspMQTTClient Library by @plapointe6 Version 1.8.0
@@ -117,8 +96,6 @@ uint32_t previousUpdateTime_MQTT_Publish = millis();
   We have put functions in other files so we need to manually add some prototypes as the automagic doesn't work correctly
 ********************************************************************************/
 
-
-
 // LED status
 uint8_t led_status;
 
@@ -157,7 +134,6 @@ const Configuration cfg(BridgechainNetwork);
 Ark::Client::Connection<Ark::Client::Api> connection(ARK_PEER, ARK_PORT);   // create ARK blockchain connection
 
 
-
 /********************************************************************************
   This structure is used to store details of the bridgechain wallet
 ********************************************************************************/
@@ -185,8 +161,6 @@ char received_edge_packet[255 + 1];
   We have put functions in other files so we need to manually add some prototypes as the automagic doesn't work correctly
 ********************************************************************************/
 void StateMachine();
-//void send_MQTTpacket();
-
 
 /********************************************************************************
   MAIN LOOP
@@ -200,19 +174,5 @@ void loop() {
   //--------------------------------------------
   // Handle the WiFi and MQTT connections
   WiFiMQTTclient.loop();
-
-  //--------------------------------------------
-  // Publish MQTT data every UpdateInterval_MQTT_Publish (10 seconds)
-  //  send_MQTTpacket();
-
-
-  //--------------------------------------------
-  // Check for Telegram Bot received messages
-//  if (millis() - previousUpdateTime_TelegramBot > UpdateInterval_TelegramBot)  {
-//    previousUpdateTime_TelegramBot += UpdateInterval_TelegramBot;
-//    telegramBotHandler();
-//  }
-
-
 
 }

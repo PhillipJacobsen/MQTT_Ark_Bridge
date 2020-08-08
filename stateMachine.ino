@@ -70,11 +70,6 @@ void StateMachine() {
           Serial.println(state);
           Serial.println("MQTT Disconnected");
         }
-        //        else if (ARK_status) {  //wait for ARK network connect
-        //          state = STATE_3;
-        //          Serial.print("State: ");
-        //          Serial.println(state);
-        //        }
 
         else {
           state = STATE_2;

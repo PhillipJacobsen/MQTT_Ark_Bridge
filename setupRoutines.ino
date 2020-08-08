@@ -36,7 +36,6 @@ void MQTT_Request_Handler (const String & payload) {
   Serial.print("received MQTT topic radians_edge/request: ");
   Serial.println(payload);
 
-
   String request = String(payload);
 
   String receiveaddress = request;
@@ -44,19 +43,7 @@ void MQTT_Request_Handler (const String & payload) {
   Serial.print(receiveaddress);
   receiveaddress.toCharArray(received_edge_packet, 255 + 1);
 
-//  if (Address::validate( Address(receiveaddress_char), BRIDGECHAIN_VERSION)) {
-//    Serial.println("Address Validated");
-//  }
-//  else {
-//    Serial.println("not a valid address");
-//    String  buf;    //NOTE!  I think sprintf() is better to use here. update when you have a chance
-//   buf += F("received invalid address: ");
-//    buf += String(payload);
-    WiFiMQTTclient.publish("radians_edge/response", "received request");
-
-   // return;
-    //break;
- // }
+  WiFiMQTTclient.publish("radians_edge/response", "received request");
 
   //--------------------------------------------
   // Retrieve Wallet Nonce from blockchain before sending transaction
@@ -91,18 +78,6 @@ void onConnectionEstablished() {
     Serial.println("\nIP address: ");
     Serial.println(WiFi.localIP());
 
-    //    // Subscribe to "IOT/set" and display received message to Serial
-    //    WiFiMQTTclient.subscribe("IOT/set", [](const String & payload) {
-    //      Serial.print("received MQTT topic IOT/set: ");
-    //      Serial.println(payload);
-    //    });
-
-
-    //    // Subscribe to "IOT/#" and display received message to Serial
-    //    WiFiMQTTclient.subscribe("radians_faucet/request", [](const String & topic, const String & payload) {
-    //      Serial.print("received MQTT via wildcard: ");
-    //      Serial.println(topic + ": " + payload);
-    //    });
 
     // Subscribe to "radians_faucet/request" via alternate callback format
     WiFiMQTTclient.subscribe("radians_edge/request", MQTT_Request_Handler);
@@ -114,17 +89,6 @@ void onConnectionEstablished() {
     Serial.println(WiFiMQTTclient.getMqttServerIp());
     Serial.println(WiFiMQTTclient.getMqttServerPort());
     Serial.println(WiFiMQTTclient.getConnectionEstablishedCount());
-
-
-
-
-
-    //--------------------------------------------
-    //  Copy data stored in Flash into RAM
-    //    loadEEPROM();                 //load page number from eeprom
-    //    if (lastRXpage_eeprom < 1) {
-    //      lastRXpage_eeprom = 0;
-    //    }
 
 
     //wait for time to sync from NTP server
@@ -151,7 +115,7 @@ void onConnectionEstablished() {
 
     // Subscribe to "radians_faucet/request" via alternate callback format
     WiFiMQTTclient.subscribe("radians_edge/request", MQTT_Request_Handler);
-    WiFiMQTTclient.publish("radians_edge/status", "true",true);  //set retain = true
+    WiFiMQTTclient.publish("radians_edge/status", "true", true); //set retain = true
   }
 
 }
