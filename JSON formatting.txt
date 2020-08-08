@@ -1,0 +1,72 @@
+{
+   "id":"87836bd5-6f06-499f-9686-bbb9499b2525",
+   "name":"RAK7205",
+   "payload":"AYgIKznutxYBHLAIAgF8B2htBnMjtQJnAMMEAgYPA3H/2f/q/FU=",
+   "acceleration_x":"-0.039g",
+   "acceleration_y":"-0.022g",
+   "acceleration_z":"-0.939g",
+   "altitude":"728.8m",
+   "barometer":"914.1hPa",
+   "battery":"3.8V",
+   "gasResistance":"15.51KΩ",
+   "humidity":"54.5%RH",
+   "latitude":"53.5353°",
+   "longitude":"-113.2778°",
+   "temperature":"19.5°C"
+}
+
+
+
+
+
+
+{
+   "app_eui":"60C5A8FFF9157205",
+   "decoded":{
+      "payload":{
+         "acceleration_x":"-0.039g",
+         "acceleration_y":"-0.022g",
+         "acceleration_z":"-0.939g",
+         "altitude":"728.8m",
+         "barometer":"914.1hPa",
+         "battery":"3.8V",
+         "gasResistance":"15.51KΩ",
+         "humidity":"54.5%RH",
+         "latitude":"53.5353°",
+         "longitude":"-113.2778°",
+         "temperature":"19.5°C"
+      },
+      "status":"success"
+   },
+   "dev_eui":"60C5A8FFFE78FC33",
+   "devaddr":"00000048",
+   "fcnt":349,
+   "hotspots":[
+      {
+         "channel":13,
+         "frequency":904.9000244140625,
+         "id":"11HhXZonK1sxhu6CEuXgqBfzjv2x7L2E81BFVZQjYHuE5pmiHMa",
+         "name":"cheery-spruce-swan",
+         "reported_at":1593670596,
+         "rssi":-27.0,
+         "snr":13.800000190734863,
+         "spreading":"SF7BW125",
+         "status":"success"
+      }
+   ],
+   "id":"118ae88c-b2ca-4fbd-a0a5-666757da3b9a",
+   "metadata":{
+      "labels":[
+         {
+            "id":"87836bd5-6f06-499f-9686-bbb9499b2525",
+            "name":"RAK7205_Decoded",
+            "organization_id":"24eb9039-aaa7-4267-8187-d8a321300b2b"
+         }
+      ]
+   },
+   "name":"RAK7205",
+   "payload":"AYgIKznutxYBHLAIAgF8B2htBnMjtQJnAMMEAgYPA3H/2f/q/FU=",
+   "port":8,
+   "reported_at":1593670596
+}
+
